@@ -219,6 +219,15 @@ jobs:
         working-directory: ./test/project_erlang
         if: ${{ matrix.run-integration-tests }}
 
+      - name: test/hextarball export hex-tarball
+        run: |
+          gleam clean
+          gleam export hex-tarball
+          test -f build/hextarball-0.1.0.tar
+        shell: bash
+        working-directory: ./test/hextarball
+        if: ${{ matrix.run-integration-tests }}
+
       - name: test/external_only_javascript
         run: ./test.sh
         working-directory: ./test/external_only_javascript
